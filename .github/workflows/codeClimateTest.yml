@@ -1,0 +1,47 @@
+name: codeClimate
+
+# Trigger the workflow on push or pull request
+on:
+  - push
+
+env:
+  CI: true
+
+jobs:
+  build:
+
+    # The type of machine that will be working to run the job on it
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Node versions list
+      matrix:
+        node-version: [20.x]
+
+    steps:
+        # Check-out repository under Github workspace
+        # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+      - run: npm ci
+        # Step's name
+      - name: Use Node.js ${{ matrix.node-version }}  
+        # Configures the node version used on Github-hosted runners 
+        # https://github.com/actions/setup-node
+
+        uses: actions/setup-node@v3
+        # The Node.js version to configure
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Test & publish code coverage
+        # Publish code coverage on Code Climate
+        # https://github.com/paambaati/codeclimate-action
+        uses: paambaati/codeclimate-action@v3.1.1
+        # Add Code Climate secret key
+        env: 
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
+      - name: Run-test
+        run: make-lint              

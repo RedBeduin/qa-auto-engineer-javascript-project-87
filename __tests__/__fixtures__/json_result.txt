@@ -1,0 +1,29 @@
+[
+    {
+        "key": "follow",
+        "obj": false,
+        "action": "removed"
+    },
+    {
+        "key": "host",
+        "obj": "hexlet.io",
+        "action": "mapped"
+    },
+    {
+        "key": "proxy",
+        "obj": "123.234.53.22",
+        "action": "removed"
+    },
+    {
+        "key": "timeout",
+        "obj1": 50,
+        "obj2": 20,
+        "action": "updated"
+    },
+    {
+        "key": "verbose",
+        "obj": true,
+        "action": "added"
+    }
+]        
+
