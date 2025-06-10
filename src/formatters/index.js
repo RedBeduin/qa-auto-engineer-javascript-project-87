@@ -1,4 +1,4 @@
-import _ from lodash;
+import _ from 'lodash';
 import plain_format from './plainformat.js';
 import json_format from './jsonformat.js';
 import default_string_format from './defaultstringformat.js';
