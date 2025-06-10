@@ -1,14 +1,12 @@
 import * as fs from 'node:fs';
 import path from 'path';
 
-const { cwd } = require('node:process');
-
 const assemble_absolute_path = (filepath_first, filepath_second) => {
   if(filepath_first[0] === '.')
-  {filepath_first = path.resolve(cwd(), filepath_first)}
+  {filepath_first = path.resolve(process.cwd(), filepath_first)}
   
   if(filepath_second[0] === '.')
-  {filepath_second = path.resolve(cwd(), filepath_second)}
+  {filepath_second = path.resolve(process.cwd(), filepath_second)}
 
   const file1extension = path.extname(filepath_first).slice(1).toLowerCase();
   const file2extension = path.extname(filepath_second).slice(1).toLowerCase();
