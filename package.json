@@ -20,12 +20,12 @@
     "url": "git+https://github.com/RedBeduin/qa-auto-engineer-javascript-project-87.git"
   },
   "type": "module",
+  "homepage": "https://github.com/RedBeduin/qa-auto-engineer-javascript-project-87#readme",
   "author": "RedBeduin",
   "license": "ISC",
   "dependencies": {
     "commander": "^13.1.0",
     "hexlet": "^1.0.4",
-    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
