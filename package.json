@@ -13,20 +13,24 @@
     "pre-push": "npx lint-staged"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RedBeduin/qa-auto-engineer-javascript-project-87.git"
   },
-  "type": "module",
-  "homepage": "https://github.com/RedBeduin/qa-auto-engineer-javascript-project-87#readme",
   "author": "RedBeduin",
   "license": "ISC",
+  "type": "module",
+  "homepage": "https://github.com/RedBeduin/qa-auto-engineer-javascript-project-87#readme",
   "dependencies": {
     "commander": "^13.1.0",
     "hexlet": "^1.0.4",
-    "lodash": "^4.17.21"
+    "json": "npm:JSON@^1.0.0",
+    "JSON": "^1.0.0",
+    "lodash": "^4.17.21",
+    "parse-json": "^8.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

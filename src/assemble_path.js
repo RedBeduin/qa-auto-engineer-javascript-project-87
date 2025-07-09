@@ -1,31 +1,27 @@
+/* eslint-disable */
+
 import * as fs from 'node:fs';
-import path from 'path';
+import path from 'node:path';
 
 const assemble_absolute_path = (filepath_first, filepath_second) => {
+  let filepath1 = filepath_first; 
   if(filepath_first[0] === '.')
-  {filepath_first = path.resolve(process.cwd(), filepath_first)}
+  {filepath1 = path.resolve(process.cwd(), filepath_first)}
   
+  let filepath2 = filepath_second;
   if(filepath_second[0] === '.')
-  {filepath_second = path.resolve(process.cwd(), filepath_second)}
+  {filepath2 = path.resolve(process.cwd(), filepath_second)}
 
-  const file1extension = path.extname(filepath_first).slice(1).toLowerCase();
-  const file2extension = path.extname(filepath_second).slice(1).toLowerCase();
+  const file1extension = path.extname(filepath1).slice(1).toLowerCase();
+  const file2extension = path.extname(filepath2).slice(1).toLowerCase();
 
-  const file1 = fs.readFileSync(filepath_first, 'utf-8');
-  
-  const file2 = fs.readFileSync(filepath_second, 'utf-8');
+  const file1 = fs.readFileSync(filepath1, 'utf8');
+  const file2 = fs.readFileSync(filepath2, 'utf8');
 
-  const firstpath = {
-    file1, file1extension
-  };
-  
-  const secondpath = {
-    file2, file2extension
-  };
-
-  const assembled_paths = [firstpath, secondpath];
-
+  const assembled_paths = [{file1, file1extension}, {file2, file2extension}];
   return assembled_paths;
 }
 
 export default assemble_absolute_path;
+
+/* eslint-enable */

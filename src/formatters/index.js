@@ -12,13 +12,9 @@ const formatters = {
 
 const diff_format = (tree, type) => {
     if (type == null || type === 'stylish')
-    {
-        return formatters.default(tree);
-    }
+    { return formatters.default(tree); }
     if (!_.includes(Object.keys(formatters), type))
-    {
-        return Error(`Unknown type: ${type};`);
-    }
+    { return Error(`Unknown type: ${type};`); }
     return formatters[type.toLowerCase()](tree);
 };
 

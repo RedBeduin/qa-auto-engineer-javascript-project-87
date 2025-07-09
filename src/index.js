@@ -1,5 +1,3 @@
-import * as fs from 'node:fs';
-import path from 'path';
 import assemble_absolute_path from './assemble_path.js';
 import parse from './parse.js';
 import diff_tree from './difftree.js';

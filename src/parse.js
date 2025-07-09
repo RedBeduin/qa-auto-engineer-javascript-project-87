@@ -1,14 +1,14 @@
-import * as fs from 'node:fs';
-import path from 'path';
+import yaml from 'js-yaml';
+import parseJson from 'parse-json';
 
-const parse = (data, format) => {
-  const parsers =
-  {
-    json: JSON.parse,
-    yaml: yaml.load,
-    yml: yaml.load,
+const parse = ( {data, format} ) => {
+  const parsers = {
+  json: parseJson(data),
+  yaml: yaml.load(data),
+  yml: yaml.load(data),
   }
-  return parsers[format](data);
-}
+  let parsedfile = parsers[format];
+  return parsedfile;
+};
 
 export default parse;
