@@ -6,7 +6,7 @@ const parsers = {
   yml: yaml.load,
 }
 
-const parse = ( {data, format} ) => {
+const parse = ({data, format}) => {
   return parsers[format](data);
 };
 

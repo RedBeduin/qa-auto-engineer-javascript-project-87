@@ -1,16 +1,16 @@
-import assemble_absolute_path from './assemble_path.js';
+import assembleAbsolutePath from './assemble_path.js';
 import parse from './parse.js';
-import diff_tree from './difftree.js';
+import diffTree from './difftree.js';
 import diff_format from './formatters/index.js';
 
-const gendiff = (filepath_first, filepath_second, format) => {
+const gendiff = (filepathFirst, filepathSecond, format) => {
   
-  const filepathfirstassembled = assemble_absolute_path(filepath_first, filepath_second)[0];
-  const filepathsecondassembled = assemble_absolute_path(filepath_first, filepath_second)[1];  
+  const filepathFirstAssembled = assembleAbsolutePath(filepathFirst);
+  const filepathSecondAssembled = assembleAbsolutePath(filepathSecond);  
 
-  const path_1_parsed = parse(filepathfirstassembled);
-  const path_2_parsed = parse(filepathsecondassembled);
-  const filetree = diff_tree(path_1_parsed, path_2_parsed);  
+  const pathFirstParsed = parse(filepathFirstAssembled);
+  const pathSecondParsed = parse(filepathSecondAssembled);
+  const filetree = diffTree(pathFirstParsed, pathSecondParsed);  
 
   return diff_format(filetree, format);
 }

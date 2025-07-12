@@ -1,53 +1,53 @@
 import _ from 'lodash';
 
-const diff = (obj1, obj2) => {
-    const obj_1_key = Object.keys(obj1);
-    const obj_2_key = Object.keys(obj2);
-    const keys = _.union(obj_1_key, obj_2_key);
-    const result = [];
+const diff = (objFirst, objSecond) => {
+  const objFirstKey = Object.keys(objFirst);
+  const objSecondKey = Object.keys(objSecond);
+  const keys = _.union(objFirstKey, objSecondKey);
+  const result = [];
 
-for (const key of keys)
-{
+  for (const key of keys)
+  {
     if 
     (
-      obj1[key] !== obj2[key]
-      && _.includes(obj_2_key, key)
-      && !_.includes(obj_1_key, key) 
+      objFirst[key] !== objSecond[key]
+      && _.includes(objSecondKey, key)
+      && !_.includes(objFirstKey, key) 
     )
     {
       result.push
       ({ 
-        key, obj: obj2[key], action: 'added' 
+        key, obj: objSecond[key], action: 'added' 
       });
     }
     else if
     (
-      obj1[key] !== obj2[key]
-      && _.includes(obj_1_key, key)   
-      && !_.includes(obj_2_key, key)
+      objFirst[key] !== objSecond[key]
+      && _.includes(objFirstKey, key)   
+      && !_.includes(objSecondKey, key)
     ) 
     {
       result.push
       ({ 
-        key, obj: obj1[key], action: 'removed' 
+        key, obj: objFirst[key], action: 'removed' 
       });
     }
     else if
     (
-      obj1[key] !== obj2[key]
-      && _.includes(obj_1_key, key)
-      && _.includes(obj_2_key, key)
+      objFirst[key] !== objSecond[key]
+      && _.includes(objFirstKey, key)
+      && _.includes(objSecondKey, key)
     ) 
     {
       result.push
       ({
-        key, obj1: obj1[key], obj2: obj2[key], action: 'updated',
+        key, objFirst: objFirst[key], objSecond: objSecond[key], action: 'updated',
       });
     }
     else if 
-    (obj1[key] === obj2[key]) 
+    (objFirst[key] === objSecond[key]) 
     {
-        result.push({ key, obj: obj1[key], action: 'mapped' });
+      result.push({ key, obj: objFirst[key], action: 'mapped' });
     }
   }
   const sortTree = _.sortBy(result, ['key']);
