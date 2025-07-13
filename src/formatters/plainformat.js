@@ -1,19 +1,19 @@
 const plainformat = (tree) => {
-    let result = '';
-    for (const element of tree) {
-        if (element.action === 'added') {
-            result = `${result}Property '${element.key}' was added with value: ${element.obj}\n`;
-        } 
-        else if (element.action === 'removed') {
-          result = `${result}Property '${element.key}' was removed\n`;            
-        }
-        else if (element.action === 'updated')
-        {
-           result = `${result}Property '${element.key}' was updated. From ${element.objFirst} to ${element.objSecond}\n`;
-        }
+  let result = '';
+  for (const element of tree) {
+    if (element.action === 'added') {
+      result = `${result}Property '${element.key}' was added with value: ${element.obj}\n`;
+    } 
+    else if (element.action === 'removed') {
+      result = `${result}Property '${element.key}' was removed\n`;            
     }
-    result = result.slice(0,-1);
-    return result;
+    else if (element.action === 'updated')
+    {
+      result = `${result}Property '${element.key}' was updated. From ${element.objFirst} to ${element.objSecond}\n`;
+    }
+  }
+  result = result.slice(0,-1);
+  return result;
 } 
 
 export default plainformat;

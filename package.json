@@ -33,6 +33,7 @@
     "parse-json": "^8.3.0"
   },
   "devDependencies": {
+    "@eslint/create-config": "^1.0.0",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.28.0",
     "eslint": "^8.57.1",
