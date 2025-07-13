@@ -12,9 +12,8 @@ const plainformat = (tree) => {
            result = `${result}Property '${element.key}' was updated. From ${element.objFirst} to ${element.objSecond}\n`;
         }
     }
-
+    result = result.slice(0,-2);
     return result;
 } 
-
 
 export default plainformat;
