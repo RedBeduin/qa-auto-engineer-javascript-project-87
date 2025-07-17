@@ -1,15 +1,16 @@
-import * as fs from 'node:fs';
-import path from 'node:path';
+import * as fs from 'node:fs'
+import path from 'node:path'
 
-const assembleAbsolutePath = (filepath) => { 
-  if(filepath[0] === '.')
-  {filepath = path.resolve(process.cwd(), filepath)}
-  
-  const format = path.extname(filepath).slice(1).toLowerCase();
+const assembleAbsolutePath = (filepath) => {
+  if (filepath[0] === '.') {
+    filepath = path.resolve(process.cwd(), filepath)
+  }
 
-  const data = fs.readFileSync(filepath, 'utf-8');
+  const format = path.extname(filepath).slice(1).toLowerCase()
 
-  return {data, format};
+  const data = fs.readFileSync(filepath, 'utf-8')
+
+  return { data, format }
 }
 
-export default assembleAbsolutePath;
+export default assembleAbsolutePath
