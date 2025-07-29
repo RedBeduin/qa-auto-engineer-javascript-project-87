@@ -23,12 +23,12 @@ test.each([
   { fileFirst: pathJsonFirst, fileSecond: pathJsonSecond, result: readFile(pathResultPlain) },
   { fileFirst: yamlFirst, fileSecond: yamlSecond, result: readFile(pathResultPlain) },
 ])(`checkPlainFormat`, ({ fileFirst, fileSecond, result }) => {
-  expect(gendiff(fileFirst, fileSecond)).toEqual(result)
+  expect(gendiff(fileFirst, fileSecond, 'plain')).toEqual(result)
 })
 
 test.each([
   { fileFirst: pathJsonFirst, fileSecond: pathJsonSecond, result: readFile(pathResultJson) },
   { fileFirst: yamlFirst, fileSecond: yamlSecond, result: readFile(pathResultJson) },
 ])(`checkJsonFormat`, ({ fileFirst, fileSecond, result }) => {
-  expect(gendiff(fileFirst, fileSecond)).toEqual(result)
+  expect(gendiff(fileFirst, fileSecond, 'json')).toEqual(result)
 })
