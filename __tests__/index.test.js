@@ -1,34 +1,20 @@
 import * as fs from 'node:fs'
 import gendiff from '../src'
 
-const getFixturePathNew = path => new URL(path, import.meta.url)
-const readFile = filename => fs.readFileSync(getFixturePathNew(filename), 'utf-8')
+const getFixturePath = path => new URL(path, import.meta.url)
+const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8')
 
-const pathJsonFirst = './__fixtures__/test-1.json'
-const pathJsonSecond = './__fixtures__/test-2.json'
-const yamlFirst = './__fixtures__/test-1.yml'
-const yamlSecond = './__fixtures__/test-2.yml'
-const pathResult = '../__fixtures__/stylish-result.txt'
-const pathResultPlain = '../__fixtures__/plain-result.txt'
-const pathResultJson = '../__fixtures__/json-result.txt'
+const tests = ['json', 'yml']
+const expectedJson = readFile('json-result.txt')
+const expectedPlain = readFile('plain-result.txt')
+const expectedStylish = readFile('stylish-result.txt')
 
-test.each([
-  { fileFirst: pathJsonFirst, fileSecond: pathJsonSecond, result: readFile(pathResult) },
-  { fileFirst: yamlFirst, fileSecond: yamlSecond, result: readFile(pathResult) },
-])(`checkDefaultFormat`, ({ fileFirst, fileSecond, result }) => {
-  expect(gendiff(fileFirst, fileSecond)).toEqual(result)
-})
+test.each(tests)('format %s', (format) => {
+  const filepath1 = getFixturePath(`file1.${format}`)
+  const filepath2 = getFixturePath(`file2.${format}`)
 
-test.each([
-  { fileFirst: pathJsonFirst, fileSecond: pathJsonSecond, result: readFile(pathResultPlain) },
-  { fileFirst: yamlFirst, fileSecond: yamlSecond, result: readFile(pathResultPlain) },
-])(`checkPlainFormat`, ({ fileFirst, fileSecond, result }) => {
-  expect(gendiff(fileFirst, fileSecond, 'plain')).toEqual(result)
-})
-
-test.each([
-  { fileFirst: pathJsonFirst, fileSecond: pathJsonSecond, result: readFile(pathResultJson) },
-  { fileFirst: yamlFirst, fileSecond: yamlSecond, result: readFile(pathResultJson) },
-])(`checkJsonFormat`, ({ fileFirst, fileSecond, result }) => {
-  expect(gendiff(fileFirst, fileSecond, 'json')).toEqual(result)
+  expect(gendiff(filepath1, filepath2)).toBe(expectedStylish)
+  expect(gendiff(filepath1, filepath2, 'stylish')).toBe(expectedStylish)
+  expect(gendiff(filepath1, filepath2, 'json')).toBe(expectedJson)
+  expect(gendiff(filepath1, filepath2, 'plain')).toBe(expectedPlain)
 })

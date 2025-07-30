@@ -3,7 +3,7 @@
 import { Command } from 'commander'
 import gendiff from '../src/index.js'
 
-const help_text = '\n  Usage: gendiff [options] <filepathFirst> <filepathSecond>\n\n  Compares two configuration files and show a difference.\n\n  Options:\n    -V, --version        output the version number\n    -h, --help           output usage information\n    -f, --format <type>  output format'
+const help_text = '\n  Usage: gendiff [options] <filepath1> <filepath2>\n\n  Compares two configuration files and shows a difference.\n\n  Options:\n    -V, --version        output the version number\n    -h, --help           output usage information\n    -f, --format <type>  output format'
 
 const program = new Command()
 program
@@ -12,10 +12,9 @@ program
   .version('0.8.0')
   .helpOption('-h, --help', help_text)
   .option('-f, --format <type>', 'output format')
-  .arguments('<filepathFirst> <filepathSecond>')
-  .action((filepathFirst, filepathSecond, options) => {
-    const tree = gendiff(filepathFirst, filepathSecond, options.format)
-    console.log(tree)
+  .arguments('<filepath1> <filepath2>')
+  .action((filepath1, filepath2, options) => {
+    console.log(gendiff(filepath1, filepath2, options.format))
   })
 
 program.parse()

@@ -10,7 +10,7 @@ const formatters = {
   stylish: default_string_format,
 }
 
-const diff_format = (tree, type) => {
+const formatTree = (tree, type) => {
   if (type == null || type === 'stylish') {
     return formatters.default(tree)
   }
@@ -20,4 +20,4 @@ const diff_format = (tree, type) => {
   return formatters[type.toLowerCase()](tree)
 }
 
-export default diff_format
+export default formatTree

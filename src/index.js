@@ -1,17 +1,18 @@
-import assembleAbsolutePath from './assemble_path.js'
 import parse from './parse.js'
-import diffTree from './difftree.js'
-import diff_format from './formatters/index.js'
+import generateDifferences from './generate-differences.js'
+import formatTree from './formatters/index.js'
+import * as fs from 'node:fs'
+import path from 'node:path'
 
-const gendiff = (filepathFirst, filepathSecond, format) => {
-  const filepathFirstAssembled = assembleAbsolutePath(filepathFirst)
-  const filepathSecondAssembled = assembleAbsolutePath(filepathSecond)
-
-  const pathFirstParsed = parse(filepathFirstAssembled)
-  const pathSecondParsed = parse(filepathSecondAssembled)
-  const filetree = diffTree(pathFirstParsed, pathSecondParsed)
-
-  return diff_format(filetree, format)
+const gendiff = (filepath1, filepath2, format) => {
+  const readFile = (filepath) => {
+    filepath = path.resolve(process.cwd(), filepath)
+    const data = parse(fs.readFileSync(filepath, 'utf-8').toString())
+    const format = path.extname(filepath).slice(1).toLowerCase()
+    return { data, format }
+  }
+  const tree = generateDifferences(readFile(filepath1), readFile(filepath2))
+  return formatTree(tree, format)
 }
 
 export default gendiff

@@ -8,7 +8,7 @@ const plainformat = (tree) => {
       result = `${result}Property '${element.key}' was removed\n`
     }
     else if (element.action === 'updated') {
-      result = `${result}Property '${element.key}' was updated. From ${element.objFirst} to ${element.objSecond}\n`
+      result = `${result}Property '${element.key}' was updated. From ${element.obj1} to ${element.obj2}\n`
     }
   }
   result = result.slice(0, -1)
