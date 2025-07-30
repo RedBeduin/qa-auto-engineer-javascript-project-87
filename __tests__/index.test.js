@@ -1,8 +1,9 @@
 import * as fs from 'node:fs'
 import gendiff from '../src'
+import path from 'node:path'
 
-const getFixturePath = path => new URL(path, import.meta.url)
-const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8')
+const getFixturePath = fixtureFileName => path.resolve(process.cwd(), fixtureFileName)
+const readFile = fileName => fs.readFileSync(getFixturePath(fileName), 'utf-8')
 
 const tests = ['json', 'yml']
 const expectedJson = readFile('json-result.txt')
@@ -10,8 +11,8 @@ const expectedPlain = readFile('plain-result.txt')
 const expectedStylish = readFile('stylish-result.txt')
 
 test.each(tests)('format %s', (format) => {
-  const filepath1 = getFixturePath(`file1.${format}`)
-  const filepath2 = getFixturePath(`file2.${format}`)
+  const filepath1 = getFixturePath(`test-1.${format}`)
+  const filepath2 = getFixturePath(`test-2.${format}`)
 
   expect(gendiff(filepath1, filepath2)).toBe(expectedStylish)
   expect(gendiff(filepath1, filepath2, 'stylish')).toBe(expectedStylish)
