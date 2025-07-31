@@ -1,8 +1,7 @@
 import * as fs from 'node:fs'
 import gendiff from '../src'
-import path from 'node:path'
 
-const getFixturePath = fixtureFileName => path.resolve(process.cwd(), fixtureFileName)
+const getFixturePath = fixtureFileName => `../${new URL(fixtureFileName, import.meta.url)}`
 const readFile = fileName => fs.readFileSync(getFixturePath(fileName), 'utf-8')
 
 const tests = ['json', 'yml']
