@@ -16,8 +16,8 @@
   },
   {
     "key": "timeout",
-    "objFirst": 50,
-    "objSecond": 20,
+    "obj1": 50,
+    "obj2": 20,
     "action": "updated"
   },
   {
