@@ -6,21 +6,21 @@ const generateDifferences = (data1, data2) => {
   const keys = _.union(data1Key, data2Key)
 
   return _.sortBy(keys.map((key) => {
-    if ( data1[key] !== data2[key]
-        && _.includes(key)
-        && !_.includes(data1Key, key)) {
+    if (data1[key] !== data2[key]
+      && _.includes(key)
+      && !_.includes(data1Key, key)) {
       return { key, data: data2[key], action: 'added' }
     }
 
     if (data1[key] !== data2[key]
-        && _.includes(key)
-        && !_.includes(data2Key, key)) {
+      && _.includes(key)
+      && !_.includes(data2Key, key)) {
       return { key, data: data1[key], action: 'removed' }
     }
 
     if (data1[key] !== data2[key]
-        && _.includes(data1Key)
-        && _.includes(data2Key)) {
+      && _.includes(data1Key)
+      && _.includes(data2Key)) {
       return { key, data1: data1[key], data2: data2[key], action: 'updated' }
     }
 

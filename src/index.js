@@ -10,7 +10,7 @@ const readFile = (filepath) => {
   const format = path.extname(filepath).slice(1).toLowerCase()
   return parse({ data, format })
 }
-const gendiff = (filepath1, filepath2, format = 'stylish') => {  
+const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const tree = generateDifferences(readFile(filepath1), readFile(filepath2))
   return formatTree(tree, format)
 }
