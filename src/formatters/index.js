@@ -1,19 +1,16 @@
 import _ from 'lodash'
-import plain_format from './plainformat.js'
-import json_format from './jsonformat.js'
-import default_string_format from './defaultstringformat.js'
+import formatPlain from './plain.js'
+import formatStylish from './stylish.js'
+
+const formatJSON = tree => JSON.stringify(tree, null, 2)
 
 const formatters = {
-  default: default_string_format,
-  plain: plain_format,
-  json: json_format,
-  stylish: default_string_format,
+  plain: formatPlain,
+  json: formatJSON,
+  stylish: formatStylish,
 }
 
 const formatTree = (tree, type) => {
-  if (type == null || type === 'stylish') {
-    return formatters.default(tree)
-  }
   if (!_.includes(Object.keys(formatters), type)) {
     return Error(`Unknown type: ${type};`)
   }

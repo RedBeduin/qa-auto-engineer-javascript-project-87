@@ -6,7 +6,10 @@ const parsers = {
   yml: yaml.load,
 }
 
-const parse = ({ data, format }) => {
+const parse = ({ data, format }) => { 
+  if (!_.includes(Object.keys(parsers), format)) {
+    return Error(`Unknown format: ${format};`)
+  }  
   return parsers[format](data)
 }
 
