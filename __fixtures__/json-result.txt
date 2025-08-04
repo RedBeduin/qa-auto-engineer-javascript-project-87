@@ -7,7 +7,7 @@
   {
     "key": "host",
     "data": "hexlet.io",
-    "action": "mapped"
+    "action": "has not been changed"
   },
   {
     "key": "proxy",
