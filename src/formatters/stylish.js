@@ -10,7 +10,7 @@ const formatStylish = (tree) => {
     else if (element.action === 'updated') {
       result = `${result}\n  - ${element.key}: ${element.data1}\n  + ${element.key}: ${element.data2}`
     }
-    else if (element.action === 'mapped') {
+    else if (element.action === 'has not been changed') {
       result = `${result}\n    ${element.key}: ${element.data}`
     }
   };
