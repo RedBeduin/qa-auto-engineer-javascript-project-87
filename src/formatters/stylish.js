@@ -1,20 +1,21 @@
 const formatStylish = (tree) => {
-  let result = ''
-  for (const element of tree) {
-    if (element.action === 'added') {
-      result = `${result}\n  + ${element.key}: ${element.data}`
-    }
-    else if (element.action === 'removed') {
-      result = `${result}\n  - ${element.key}: ${element.data}`
-    }
-    else if (element.action === 'updated') {
-      result = `${result}\n  - ${element.key}: ${element.data1}\n  + ${element.key}: ${element.data2}`
-    }
-    else if (element.action === 'has not been changed') {
-      result = `${result}\n    ${element.key}: ${element.data}`
-    }
-  };
-  return `{${result}\n}`
+  const result = tree.filter(
+    element => element.action === 'added' || element.action === 'removed' || element.action === 'updated' || element.action === 'unchanged').map(
+    (element) => {
+      if (element.action === 'added') {
+        return `+ ${element.key}: ${element.data}`
+      }
+      else if (element.action === 'removed') {
+        return `- ${element.key}: ${element.data}`
+      }
+      else if (element.action === 'updated') {
+        return `- ${element.key}: ${element.data1}\n  + ${element.key}: ${element.data2}`
+      }
+      else if (element.action === 'unchanged') {
+        return `  ${element.key}: ${element.data}`
+      }
+    }).join(`\n  `)
+  return `{\n  ${result}\n}`
 }
 
 export default formatStylish

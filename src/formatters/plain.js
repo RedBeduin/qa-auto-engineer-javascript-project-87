@@ -1,17 +1,18 @@
 const formatPlain = (tree) => {
-  let result = ''
-  for (const element of tree) {
-    if (element.action === 'added') {
-      result = `${result}Property '${element.key}' was added with value: ${element.data}\n`
-    }
-    else if (element.action === 'removed') {
-      result = `${result}Property '${element.key}' was removed\n`
-    }
-    else if (element.action === 'updated') {
-      result = `${result}Property '${element.key}' was updated. From ${element.data1} to ${element.data2}\n`
-    }
-  }
-  result = result.slice(0, -1)
+  const result = tree.filter(
+    element => element.action === 'added' || element.action === 'removed' || element.action === 'updated').map(
+    (element) => {
+      if (element.action === 'added') {
+        return `Property '${element.key}' was added with value: ${element.data}`
+      }
+      else if (element.action === 'removed') {
+        return `Property '${element.key}' was removed`
+      }
+      else if (element.action === 'updated') {
+        return `Property '${element.key}' was updated. From ${element.data1} to ${element.data2}`
+      }
+    }).join('\n')
+
   return result
 }
 
