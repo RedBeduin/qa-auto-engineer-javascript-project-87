@@ -17,3 +17,12 @@ Application to generate differences between two files, has option to set the for
 ### Algorythm of the launch
 1.Open Ubuntu and move to the project directory  
 2.Type "gendiff ./\_\_fixtures\_\_/file1.json ./\_\_fixtures\_\_/file2.json" and check that the result of the launch of the application(list of the differences between files) is displayed correctly. You can also add options, for example, if you want to see the result in plain format, you shall type "gendiff --format plain ...", or, if you need JSON format or stylish format, you can type "gendiff --format json ..." to recieve the result in JSON format and "gendiff --format stylish ..." to recieve the result in stylish format(which is default format). In addition, you can compare another files. To do that, you shall add another two files in JSON or YAML format in the "\_\_fixtures\_\_" directory and write the paths to the file as the parameters of the gendiff command, in other words, you need to fill your option and filepaths in "gendiff (option) (1st filepath) (2nd filepath)" or leave the option empty to see the result in the stylish format, which is decided to be the default format. The filepath you enter can be absolute or relative.  
+
+Example of comparing 2 JSON files, default(stylish) format:
+ https://asciinema.org/a/HgQJoh31qUNlE3O69T1WHI4k0
+Example of comparing 2 yml files, default(stylish) format:
+ https://asciinema.org/a/iCQshU4dBbPefp1OwVVRkXsCN 
+Example of comparing 2 yml files, plain format:
+ https://asciinema.org/a/xnTC4FW6Y06YD0Luk8YJCyEdd
+Example of comparing 2 yml files, JSON format:
+ https://asciinema.org/a/oxNeq5sZUoFOw65jJaWTxujGP
