@@ -1,6 +1,5 @@
 const formatStylish = (tree) => {
-  const result = tree.filter(
-    element => element.action === 'added' || element.action === 'removed' || element.action === 'updated' || element.action === 'unchanged').map(
+  const result = tree.map(
     (element) => {
       if (element.action === 'added') {
         return `+ ${element.key}: ${element.data}`
