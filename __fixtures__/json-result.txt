@@ -2,27 +2,27 @@
   {
     "key": "follow",
     "data": false,
-    "action": "removed"
+    "type": "removed"
   },
   {
     "key": "host",
     "data": "hexlet.io",
-    "action": "unchanged"
+    "type": "unchanged"
   },
   {
     "key": "proxy",
     "data": "123.234.53.22",
-    "action": "removed"
+    "type": "removed"
   },
   {
     "key": "timeout",
     "data1": 50,
     "data2": 20,
-    "action": "updated"
+    "type": "updated"
   },
   {
     "key": "verbose",
     "data": true,
-    "action": "added"
+    "type": "added"
   }
 ]

@@ -7,18 +7,18 @@ const generateDifferences = (data1, data2) => {
 
   return _.sortBy(keys.map((key) => {
     if (!_.includes(keys1, key)) {
-      return { key, data: data2[key], action: 'added' }
+      return { key, data: data2[key], type: 'added' }
     }
 
     if (!_.includes(keys2, key)) {
-      return { key, data: data1[key], action: 'removed' }
+      return { key, data: data1[key], type: 'removed' }
     }
 
     if (data1[key] !== data2[key]) {
-      return { key, data1: data1[key], data2: data2[key], action: 'updated' }
+      return { key, data1: data1[key], data2: data2[key], type: 'updated' }
     }
 
-    return { key, data: data1[key], action: 'unchanged' }
+    return { key, data: data1[key], type: 'unchanged' }
   }), ['key'])
 }
 

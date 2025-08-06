@@ -1,14 +1,14 @@
 const formatPlain = (tree) => {
   const result = tree.filter(
-    element => element.action === 'added' || element.action === 'removed' || element.action === 'updated').map(
+    element => element.type === 'added' || element.type === 'removed' || element.type === 'updated').map(
     (element) => {
-      if (element.action === 'added') {
+      if (element.type === 'added') {
         return `Property '${element.key}' was added with value: ${element.data}`
       }
-      else if (element.action === 'removed') {
+      else if (element.type === 'removed') {
         return `Property '${element.key}' was removed`
       }
-      else if (element.action === 'updated') {
+      else if (element.type === 'updated') {
         return `Property '${element.key}' was updated. From ${element.data1} to ${element.data2}`
       }
     }).join('\n')
